@@ -6,7 +6,7 @@ export const Container = styled(Link)`
   
   border-radius: 8px;
   height: 48px;
-
+  
   font-weight: 500;
   
   display: flex;  

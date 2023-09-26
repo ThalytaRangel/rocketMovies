@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
+
 
 export const Container = styled.header`
   width: 100%;
@@ -38,13 +39,13 @@ export const Input = styled.input`
   font-size: 14px;
 `;
 
-export const Profile = styled(Link)`
+export const Profile = styled.div`
   display: flex;  
   align-items: center;
   
   gap: 9px;
 
-  > img {
+  > Link img {
     width: 64px;
     height: 64px;
     border: 1px solid ${({theme}) => theme.COLORS.GRAY_200};
@@ -53,8 +54,7 @@ export const Profile = styled(Link)`
 
   > div {
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
     
 
     strong {
@@ -80,3 +80,12 @@ export const Logout = styled.button`
   align-self: end;
 
 `;
+
+export const ImgLink = styled(Link)`
+> img {
+    width: 64px;
+    height: 64px;
+    border: 1px solid ${({theme}) => theme.COLORS.GRAY_200};
+    border-radius: 50%;
+  }
+`

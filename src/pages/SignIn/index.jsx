@@ -1,12 +1,20 @@
-import { Container, Form, Background } from './styles';
-import { Button } from '../../components/Button';
-import { ButtonText } from '../../components/ButtonText';
-import { Input } from '../../components/Input';
-import {FiLock, FiMail} from 'react-icons/fi';
-
-
+import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
+import { Container, Form, Background } from "./styles";
+import { Button } from "../../components/Button";
+import { ButtonText } from "../../components/ButtonText";
+import { Input } from "../../components/Input";
+import { FiLock, FiMail } from "react-icons/fi";
 
 export function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signIn } = useAuth();
+
+  function handleSignIn() {
+    signIn({ email, password });
+  }
+
   return (
     <Container>
       <Form>
@@ -15,14 +23,24 @@ export function SignIn() {
 
         <h2>Faça seu login</h2>
 
-        <Input placeholder="Email" type="text" icon={FiMail}/>
-        <Input placeholder="Senha" type="password" icon={FiLock}/>
+        <Input
+          placeholder="Email"
+          type="text"
+          icon={FiMail}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          placeholder="Senha"
+          type="password"
+          icon={FiLock}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-        <Button title="Entrar"/>
+        <Button id="login" title="Entrar" onClick={handleSignIn} />
 
-        <ButtonText to="/register" title="Criar conta"/>
+        <ButtonText to="/register" title="Criar conta" />
       </Form>
-      <Background/>
+      <Background />
     </Container>
   );
 }

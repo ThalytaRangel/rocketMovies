@@ -34,7 +34,7 @@ export const Form = styled.form`
     margin-bottom: 48px;
   }
 
-  > Button {
+  > #cadastrar {
     margin-top: 24px;
     margin-bottom: 42px;
     width: 100%;
