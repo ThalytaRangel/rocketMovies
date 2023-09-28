@@ -17,6 +17,10 @@ export function New() {
   const [rating, setRating] = useState("");
   const navigate = useNavigate();
 
+  function handleBack() {
+    navigate(-1);
+  }
+
   function handleAddTag() {
     setTags((prevState) => [...prevState, newTag]);
     setNewTag("");
@@ -26,15 +30,17 @@ export function New() {
     setTags((prevState) => prevState.filter((tag) => tag !== deleted));
   }
 
-  async function handleNewNote() {
+  async function handleNewNote(e) {
+    e.preventDefault();
     if (!title) {
       return alert("Você precisa adicionar um título");
     }
 
-    if (!rating) {
-      return alert("Você precisa adicionar uma nota para o filme");
-    }
+    const isRatingValid = rating >= 0 && rating <= 5 && rating !== "";
 
+    if (!isRatingValid) {
+      return alert("Você precisa adicionar um número entre 0 e 5");
+    }
     if (newTag) {
       return alert("Você precisa adicionar a Tag ou deixar o campo vazio");
     }
@@ -45,8 +51,9 @@ export function New() {
       description,
       tags,
     });
+
     alert("Nota cadastrada com sucesso!");
-    navigate(-1);
+    navigate("/");
   }
 
   return (
@@ -55,7 +62,12 @@ export function New() {
       <main>
         <Form>
           <header>
-            <ButtonText id="return" to="/" icon={FiArrowLeft} title="Voltar" />
+            <ButtonText
+              id="return"
+              onClick={handleBack}
+              icon={FiArrowLeft}
+              title="Voltar"
+            />
             <h1>Novo filme</h1>
           </header>
           <div className="info">
@@ -65,6 +77,8 @@ export function New() {
             />
             <Input
               placeholder="Sua nota (de 0 a 5)"
+              type="text"
+              value={rating}
               onChange={(e) => setRating(e.target.value)}
             />
           </div>
@@ -93,7 +107,9 @@ export function New() {
             </div>
           </Markers>
           <div className="buttons">
-            <button className="btn-delete">Excluir filme</button>
+            <button className="btn-delete" onClick={handleBack}>
+              Descartar alterações
+            </button>
             <Button onClick={handleNewNote}>Salvar alterações</Button>
           </div>
         </Form>

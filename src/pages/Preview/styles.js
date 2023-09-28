@@ -21,9 +21,15 @@ export const Content = styled.div`
     max-width: 1200px;
     max-height: 450px ;
     padding-right: 24px;
-    overflow-y: auto;    
+    overflow-y: auto;
+    
+    header {
+      display: flex;
+      align-items: center;      
+      justify-content: space-between;
+    }
 
-     p {
+    p {
       align-items: flex-start;
       text-align: justify;      
      }

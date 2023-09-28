@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 import { Container, Form, Background } from "./styles";
 import { Button } from "../../components/Button";
@@ -10,6 +11,7 @@ export function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signIn } = useAuth();
+  const navigate = useNavigate();
 
   function handleSignIn() {
     signIn({ email, password });
@@ -38,7 +40,10 @@ export function SignIn() {
 
         <Button id="login" title="Entrar" onClick={handleSignIn} />
 
-        <ButtonText to="/register" title="Criar conta" />
+        <ButtonText
+          onClick={(e) => navigate("/register")}
+          title="Criar conta"
+        />
       </Form>
       <Background />
     </Container>

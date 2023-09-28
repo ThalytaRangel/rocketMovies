@@ -25,18 +25,18 @@ export const Container = styled.header`
     font-size: 24px;
     font-weight: 700;
   }
-`;
 
-export const Input = styled.input`
-  width: 630px;
-  height: 56px;
-  padding: 19px 24px;
-  border: none;
-  border-radius: 10px;
-  background-color: ${({theme}) => theme.COLORS.BACKGROUND_800};
+  input {
+    width: 630px;
+    height: 56px;
+    padding: 19px 24px;
+    border: none;
+    border-radius: 10px;
+    background-color: ${({theme}) => theme.COLORS.BACKGROUND_800};
 
-  color: ${({theme}) => theme.COLORS.GRAY_100};
-  font-size: 14px;
+    color: ${({theme}) => theme.COLORS.GRAY_100};
+    font-size: 14px;
+  }
 `;
 
 export const Profile = styled.div`
