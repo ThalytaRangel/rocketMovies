@@ -1,7 +1,7 @@
 import { Container, Form, Markers, Button } from "./styles";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
-import { TextArea } from "../../components/TextArea";
+import { TextArea } from "../../components/Textarea";
 import { NoteItem } from "../../components/NoteItem";
 import { ButtonText } from "../../components/ButtonText";
 import { FiArrowLeft } from "react-icons/fi";
